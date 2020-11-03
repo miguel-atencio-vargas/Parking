@@ -1,0 +1,39 @@
+doctype
+html(lang="es")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+		meta(name="format-detection", content="telephone=no, email=no, address=no, date=no")
+		link(rel="icon" href="/images/favicon.ico" type="image/ico")
+		meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+
+		//-Icomoon
+		link(rel="stylesheet" href="/css/vendors/icomoon.css")
+		//-PopUp - Magnific
+		link(rel="stylesheet", href="/css/vendors/magnific.css", data-turbolinks-track="reload")
+
+
+		block title
+			title PARKING
+		block variables
+
+
+		//-Turbolinks
+		script(src="/js/vendors/turbolinks.js")
+		// CSS GLOBAL
+		link(rel='stylesheet', href='/css/global.css' data-turbolinks-track="reload")
+
+		//-Scripts Vendors
+		script(src="/js/vendors/jquery-1.9.1.min.js" defer, data-turbolinks-eval="false", data-turbolinks-track="reload")
+		script(src="/js/vendors/magnific.js" defer, data-turbolinks-eval="false", data-turbolinks-track="reload" )
+
+		//-Script GLOBAL
+		script(src="/js/global.js", defer, data-turbolinks-eval="false", data-turbolinks-track="reload")
+
+
+
+	body.c-block-body
+		.c-fixed
+			include header
+		.g-container
+			block container

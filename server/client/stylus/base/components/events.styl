@@ -1,0 +1,92 @@
+/*
+* Menu para listar a los eventos
+*/
+.c-group-list
+	padding-top: .5rem
+	margin-bottom: 2rem
+	@media only screen and (min-width: $breakpoints['m'] + 1)
+		display: flex
+		justify-content: center
+
+
+.g-container-grid
+	@media only screen and (min-width: $breakpoints['m'] + 1)
+		display: grid
+		margin: 0 1.5rem
+		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr))
+		//grid-template-rows: auto auto
+		grid-column-gap: 1rem
+
+.c-group__btn
+	display: block
+	text-align: center
+	font-size: $text-size.normal
+	border: 1.5px solid #FFF
+	border-radius: 50px
+	padding: 1rem 1.5rem
+	&:nth-child(2), &:nth-child(3)
+		margin: 8px 0
+		@media only screen and (min-width: $breakpoints['m'] + 1)
+			margin: 0 .5rem
+/*
+* Tarjetas para mostrar los eventos
+*/
+.c-card
+	border: 2px solid #06F
+	border-radius: 10px
+	padding: 1rem 2rem
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	align-items: center
+	margin-bottom: 2rem
+	//align-self: baseline
+
+.c-card__date, .c-card__time, .c-card__desc, .c-card__fb
+	font-size: $text-size.normal-2
+// Titulo del evento
+
+.c-card__heading-1
+	padding-top: 1rem
+	font-size: $header-font-size.h2
+
+.c-card-line
+	width: 100%
+	margin-bottom: 1.5rem
+
+.c-group-dates
+	margin-bottom: 1rem
+// Fecha del evento
+.c-card__date
+	display: inline
+// Hora del evento
+.c-card__time
+	display: inline-block
+	padding-left: 2rem
+// Link de facebook del evento
+.c-card__fb
+	display: block
+	margin-bottom: 2rem
+// Descripcion del evento
+.c-card__desc
+	overflow-y: auto
+	overflow-x: hidden
+	max-height: 18rem
+	margin-bottom: 3rem
+// Boton de editar el evento
+.c-card__btn
+	display:block
+	margin: 0 auto 1rem
+	width: 90%
+	font-size: $text-size.normal-2
+	border: .4rem solid #39FF9A
+	border-radius: 10px
+	padding: 1rem 2rem
+	text-align: center
+	font-weight: 700
+
+.header, .footer, .c-group
+	grid-column: 1 / -1;
+// Estilos para el boton seleccionado
+.active
+	background: #575757

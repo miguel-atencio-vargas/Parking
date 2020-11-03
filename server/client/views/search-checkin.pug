@@ -1,0 +1,9 @@
+extends includes/layout
+
+block container
+	.c-title
+		.h1 Registrar entrada de vehículo
+	form.c-form-search(method='POST', action='')
+		include includes/message
+		input.c-form-plate(name='plate' type='text' maxlength='8' placeholder="Placa" value=(car===undefined ? '' : car.plate))
+		button.c-form-submit(type='submit') Buscar vehículo

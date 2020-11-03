@@ -1,0 +1,20 @@
+extends includes/layout
+block container
+	.c-title
+		.h2 Registrar nuevo vehículo
+		p El campo es necesario. (*)
+	form.c-form(method='POST', action='/checkin/new-car')
+		p Matrícula del vehiculo (*):
+		input.c-form-plate(name='plate' type='text' maxlength='8' value=(plate===undefined ? car.plate : plate))
+		
+		p Marca del vehículo:
+		input(name='brand' type='text' maxlength='30' placeholder='ACME' value=(car===undefined ? '' : car.brand))
+		
+		p Nombre del dueño del vehículo:
+		input(name='owner' type='text' maxlength='40' placeholder='Luis Pérez' value=(car===undefined ? '' : car.owner))
+		
+		p Celular del dueño del vehículo:
+		input(name='phone' type='phone' maxlength='10' placeholder="70000000" value=(car===undefined ? '' : car.ownerPhone))
+
+		include includes/error_message
+		button.c-form-submit.center(type='submit') Registrar entrada del vehículo
