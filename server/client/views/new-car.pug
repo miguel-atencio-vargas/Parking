@@ -14,7 +14,7 @@ block container
 		input(name='owner' type='text' maxlength='40' placeholder='Luis Pérez' value=(car===undefined ? '' : car.owner))
 		
 		p Celular del dueño del vehículo:
-		input(name='phone' type='phone' maxlength='10' placeholder="70000000" value=(car===undefined ? '' : car.ownerPhone))
+		input(name='ownerPhone' type='phone' maxlength='10' placeholder="70000000" value=(car===undefined ? '' : car.ownerPhone))
 
 		include includes/error_message
-		button.c-form-submit.center(type='submit') Registrar entrada del vehículo
+		button.c-form-submit.center(type='submit') Registrar entrada del vehículo #[i.icon-floppy-disk]

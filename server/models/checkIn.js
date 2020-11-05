@@ -16,13 +16,22 @@ let CheckInSchema = Schema({
 		required: [false, 'El registro de un coche debe estar a cargo de un empleado']
 	},
 	timeCheckIn: {
-		type: Date,
-		default: new Date()
+		type: String,
+		required: [true, 'La hora de ingreso es necesaria']
 	},
 	timeOutgoing: {
-		type: Date
+		type: String
 	},
-	total: Number
+	total: Number,
+	isInside: {
+		type: Boolean,
+		default: true
+	},
+	plate: {
+		type: String,
+		required: [true, 'La placa del coche es necesaria'],
+		unique: false
+	},
 })
 
 CheckInSchema.plugin(uniqueValidator, {

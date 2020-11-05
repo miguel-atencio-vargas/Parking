@@ -1,0 +1,25 @@
+extends includes/layout
+block container
+	.c-details-container
+		.c-details-title
+			.h1 Detalle del vehículo saliente
+		.c-details-data
+			.h2 Placa: #[i=plate]
+			.h2 Dueño: #[i=owner]
+			.h2 Celular: #[i=ownerPhone]
+			.h2 Marca: #[i=brand]
+			hr
+			.h2 Fecha de entrada: #[i=timeCheckIn]
+			.h2 Fecha de salida: #[i=timeOutgoingHumanizable]
+			.h2 Tiempo dentro del parqueo: 
+				if data.days
+					i= data.days + ' Dia, '
+				if data.hours
+					i= data.hours + 'Hr, '
+				if data.minutes
+					i= data.minutes + 'Min'
+			.h2 Total a cobrar:  Bs.
+			form(method='POST', action='/outgoing')
+				input.hide(name='_id', value=ObjectId)
+				input.hide(name='timeOutgoing', value=timeOutgoing)
+				button.c-form-submit.center(type='submit') Registrar salida del vehículo

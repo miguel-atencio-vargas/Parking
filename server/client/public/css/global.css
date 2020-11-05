@@ -331,6 +331,77 @@ table {
   color: #ff4747;
   vertical-align: middle;
 }
+.c-details-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.c-details-data {
+  color: #ffc456;
+}
+.c-details-data i {
+  font-style: normal;
+  font-weight: 500;
+  color: #fff7e8;
+}
+input.hide {
+  display: none;
+}
+.c-container {
+  display: flex;
+  justify-content: space-between;
+}
+.c-container .c-left .h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+ul.c-header__panel li {
+  border-radius: 100px;
+  margin: 3px;
+  border: 2px solid #39ff9a;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+ul.c-header__panel li a,
+ul.c-header__panel li label {
+  line-height: 34px;
+  font-size: 2.2rem;
+  display: inline-block;
+  height: 100%;
+  padding: 0.2rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+ul.c-header__panel li:hover {
+  transition: 0.5s ease;
+  background: rgba(57,255,154,0.13);
+}
+ul.c-header__panel li i {
+  vertical-align: middle;
+  padding-left: 1rem;
+  color: #ffc456;
+}
+.c-right {
+  width: 70%;
+  margin-left: 30px;
+  display: grid;
+  text-align: center;
+  grid-template-rows: 19%;
+  grid-row-gap: 7px;
+  grid-column-gap: 2px;
+}
+.c-right .h2 {
+  grid-column: 1/4;
+  align-self: center;
+}
+.c-right .p,
+.c-right .h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid 2px #9039ff;
+  border-radius: 10px;
+  font-size: 1.6rem;
+}
 .c-title {
   color: #fff9ef;
   padding: 2rem 4rem;
@@ -338,7 +409,7 @@ table {
 }
 .c-form-search {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 2rem 0;
 }
@@ -364,9 +435,14 @@ input:focus {
   border: 3px solid #3f9;
   box-shadow: 0 0 5px 5px rgba(51,255,153,0.4);
 }
+input:visited {
+  border: 3px solid #e03333;
+  box-shadow: 0 0 5px 5px rgba(255,0,0,0.4);
+}
 .c-form-plate {
   width: 30rem;
   padding: 1rem;
+  margin-right: 1rem;
   text-align: center;
   font-size: 3.5rem;
   text-transform: uppercase;
@@ -378,10 +454,13 @@ button.c-form-submit {
   border: 0.4rem solid #39ff9a;
   background-color: #222a2e;
   color: #fff7e8;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 2.2rem;
-  padding: 1rem;
-  width: 50%;
+  padding: 1.5rem 4rem;
+}
+button.c-form-submit i {
+  vertical-align: middle;
+  color: #ffc456;
 }
 .center {
   margin: 0 auto;

@@ -1,4 +1,18 @@
 extends includes/layout
 
+
 block container
-	h2 PARKING HOME
+	.c-container
+		.c-left
+			.h2 Panel de control del parqueo
+			ul.c-header__panel
+				include includes/nav
+		.c-right
+			.h2 Vehículos dentro del parqueo
+			.h3 Número
+			.h3 Placa del vehículo
+			.h3 Fecha de ingreso
+			for item, i in checkIns
+				.p= i+1
+				.p= item.plate
+				.p= item.timeCheckIn

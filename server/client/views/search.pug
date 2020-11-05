@@ -1,0 +1,21 @@
+extends includes/layout
+
+block variables
+block container
+	.c-title
+		case type
+			when 'checkin'
+				.h1 Registrar entrada de vehículo
+			when 'outgoing'
+				.h1 Registrar salida del vehículo
+	case type
+		when 'checkin'
+			form.c-form-search(method='POST', action='')
+				include includes/message
+				input.c-form-plate(name='plate' type='text' maxlength='8' placeholder="Placa" required value=(car===undefined ? '' : car.plate))
+				button.c-form-submit(type='submit') Buscar vehículo #[i.icon-search3]
+		when 'outgoing'
+			form.c-form-search(method='POST', action='/outgoing/search')
+				include includes/message
+				input.c-form-plate(name='plate' type='text' maxlength='8' placeholder="Placa" required value=(car===undefined ? '' : car.plate))
+				button.c-form-submit(type='submit') Buscar vehículo #[i.icon-search3]

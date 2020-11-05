@@ -1,6 +1,9 @@
 
 li.close(class={active_page: page == '/events'})
-	a(href="/checkin/search") Registrar Vehículo#[i.icon-car]
+	a(href="/checkin/search") Entrada de vehículo#[i.icon-car]
+
+li.close(class={active_page: page == '/outgoing'})
+	a(href="/outgoing/search") Salida de vehículo#[i.icon-exit]
 
 li.close(class={active_page: page == '/register'})
 	a(href="/register") Registrar Empleado#[i.icon-user-plus]
