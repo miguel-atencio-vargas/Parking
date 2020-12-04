@@ -1,0 +1,30 @@
+extends includes/layout
+
+block title
+	title PARKING | #{ title }
+
+block variables
+	- page = '/signin'
+block container
+	form.c-form(method='POST', action='/employed'+page)
+		.c-title-form
+			.h2 Iniciar Sesión PARKING
+			include includes/err_msg
+			hr
+		.c-form-personal
+			include includes/message
+			p Carnet de Identidad:
+			input(name='CI' type='number' value=(employed===undefined ? '' : employed.CI))
+			p Contraseña:
+			.c-form-password
+				input#password(name='password' type='password' value=(employed===undefined ? '' : employed.password))
+				button.showPass(type='button' onclick='showPass()') #[i#eye-1.icon-eye2]
+
+
+		include includes/error_message
+		button.c-form-submit-litle(type='submit') Iniciar Sesión
+
+		.c-form-login
+			hr
+			p O puede:
+			a.c-card__btn(href='/employed/register') Registrar nuevo trabajador

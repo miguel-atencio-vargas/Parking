@@ -64,6 +64,25 @@ checkinCtrl.outgoingCar = async(req, res) => {
 		const dateCheckIn = checkIn.timeCheckIn;
 		const now = moment();
 		const data = moment.duration(now.diff(dateCheckIn));
+		let minutes = Math.floor((data._milliseconds / 1000)/60);
+		let total = 3;
+		if( minutes > 45 && minutes <= 60 ){
+			total = 5;
+		}else if( minutes > 60 && minutes <= 105 ){
+			total = 10;
+		}else if(minutes > 105 && minutes <= 120){
+			total = 13;
+		}else if( minutes > 120){
+			minutes = minutes - 120;
+			total = 13;
+			do {
+				console.log(minutes);
+				console.log(total+' + 3');
+				total+=3;
+				minutes-=60;
+			} while (minutes>0);
+		}
+
 		res.render('details-car', {
 			ObjectId: checkIn._id,
 			plate: checkIn.plate,
@@ -73,7 +92,8 @@ checkinCtrl.outgoingCar = async(req, res) => {
 			timeCheckIn: moment(dateCheckIn).format('LLLL'),
 			data: data._data,
 			timeOutgoingHumanizable: now.format('LLLL'),
-			timeOutgoing: now
+			timeOutgoing: now,
+			total
 		});
 	}else{
 		res.json({ok: true, message: 'no se ha encontrado ningun vehiculo con esa placa'})

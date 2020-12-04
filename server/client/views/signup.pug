@@ -1,0 +1,52 @@
+extends includes/layout
+
+block title
+	title BMT | #{title}
+
+block variables
+	-page = '/signup'
+block container
+	form.c-form(method='POST', action='/employed'+page)
+		.c-title-form
+			.h2 Crear cuenta de encargado del parking.
+			p Todos los campos son necesarios.
+			hr
+		.c-form-personal
+			p Carnet de Identidad:
+			input(name='CI' type='string' value=(employed===undefined ? '' : employed.CI))
+			p Ingrese una contraseña segura (mínimo 8 caracteres, 1 número y un simbolo):
+			.c-form-password
+				input#password(name='password' type='password' value=(employed===undefined ? '' : employed.password))
+				button.showPass(type='button' onclick='showPass()') #[i#eye-1.icon-eye2]
+			p Por favor confirme la contraseña:
+			.c-form-password
+				input#confirm(name='confirm' type='password' value=(employed===undefined ? '' : employed.confirm))
+				button.showPass(type='button' onclick='showConfirm()') #[i#eye-2.icon-eye2]
+		.c-form-code
+			p Para crear la cuenta requerirá el código proporcionado por el administrador del sitio. A continuación ingrese el código:
+			.c-form-password
+				input#code(name='code' type='password' value=(employed===undefined ? '' : employed.code))
+				button.showPass(type='button' onclick='showCode()') #[i#eye-3.icon-eye2]
+			.c-form-personal-data
+				p Ingrese su nombre:
+				input(name='firstName' type='text' value=(employed===undefined ? '' : employed.firstName))
+				p Ingrese su apellido:
+				input(name='lastName' type='text' value=(employed===undefined ? '' : employed.lastName))
+				p Ingrese su numero de celular:
+				input(name='phone' type='text' value=(employed===undefined ? '' : employed.phone))
+				p Ingrese su hora de entrada:
+				input(name='startingTime' type='text' value=(employed===undefined ? '' : employed.startingTime))
+				p Ingrese su hora de salida:
+				input(name='finishingTime' type='text' value=(employed===undefined ? '' : employed.finishingTime))
+				p Ingrese su email:
+				input(name='email' type='email' value=(employed===undefined ? '' : employed.email))
+				p Ingrese el salario asignado en Bs:
+				input(name='salary' type='text' value=(employed===undefined ? '' : employed.salary))
+
+		include includes/error_message
+		button.c-form-submit-litle(type='submit') Crear trabajador
+
+		.c-form-login
+			hr
+			p O sí ya tiene una cuenta puede:
+			a.c-card__btn(href='/employed/signin') Iniciar Sesión

@@ -1,12 +1,12 @@
 'use strict'
 
 const { body, check, validationResult } = require('express-validator');
-const bcrypt = require('bcrypt');
 require('../config');
-
+const CODE = process.env.CODE;
+const Employed = require('../models/employed');
 
 //1. Primero revisar que los campos no esten vacios
-exports.check_field = [
+exports.checkField = [
 	body('*', 'no puede estar vacio').not().isEmpty(),
 	function(req, res, next){
 		const errors = validationResult(req).array();
@@ -20,20 +20,32 @@ exports.check_field = [
 		}
 	}
 ]
+exports.checkFieldSignup = [
+	body('*', 'no puede estar vacio').not().isEmpty(),
+	function(req, res, next){
+		const errors = validationResult(req).array();
+		if( errors.length !== 0 ){
+			res.render( 'signup', {
+				employed: req.body,
+				errors
+			})
+		}else{
+			next() // ir al siguiente middleware
+		}
+	}
+]
 //2. Revisar que el codigo sea incorrecto
 //  codigo
-exports.check_code_register = [
+exports.checkCodeRegister = [
 	body('code').custom(code => {
-		//seria bueno añadir un encriptado al code.
-		if(code !== BMT) throw new Error('es incorrecto.')
+		if(code !== CODE) throw new Error('es incorrecto.')
 		else return true
 	}), function(req, res, next) {
-		const page = req.originalUrl.replace(/\//g, '')
-		const errors = validationResult(req).array()
+		const errors = validationResult(req).array();
 		if( errors.length !== 0 ){
-			res.render( page, {
+			res.render( 'signup', {
 				title: 'Revise el código',
-				admin: req.body,
+				employed: req.body,
 				errors
 			})
 		}else{
@@ -43,21 +55,20 @@ exports.check_code_register = [
 ]
 //3. Revisar que el correo no este en uso(1ra validacion asi se evita gasto de procesamiento)
 // TODO: Si ya esta en uso dar la opcion de recuperar contraseña.
-exports.check_email_coincidence = [
-	check('email').custom((value) => {
-		const query = Admin.find({ email: value})
-		return query.lean().exec().then(user => {
-			if (user.length > 0) {
+exports.checkCiCoincidence = [
+	check('CI').custom((value) => {
+		const query = Employed.find({ CI: value});
+		return query.lean().exec().then(employed => {
+			if (employed.length > 0) {
 				return Promise.reject('ya se encuentra en uso.');
 			}
 		})
 	}), function(req, res, next){
-		const page = req.originalUrl.replace(/\//g, '')
 		const errors = validationResult(req).array()
 		if( errors.length !== 0 ){
-			res.render( page, {
-				title: 'El E-mail ya esta en uso',
-				admin: req.body,
+			res.render( 'signup', {
+				title: 'El numero de carnet ya está en uso',
+				employed: req.body,
 				errors
 			})
 		}else{
@@ -66,16 +77,15 @@ exports.check_email_coincidence = [
 	}
 ]
 //4. Revisar que la contraseña cumple con los requisitos
-exports.check_password_min = [
+exports.checkPasswordMin = [
 	body('password', 'no cumple con los requisitos necesarios.')
 	.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
 	function(req, res, next){
-		const page = req.originalUrl.replace(/\//g, '')
-		const errors  = validationResult(req).array()
+		const errors  = validationResult(req).array();
 		if( errors.length !== 0 ){
-			res.render( page, {
+			res.render( 'signup', {
 				title: 'Revise la contraseña',
-				admin: req.body,
+				employed: req.body,
 				errors
 			})
 		}else{
@@ -84,19 +94,18 @@ exports.check_password_min = [
 	}
 ]
 //5. Revisar que las contraseñas sean iguales
-exports.check_confirm = [
+exports.checkConfirm = [
 	check('password').custom((password, { req }) => {
 		if(password !== req.body.confirm)
 			throw new Error('no coincide con la confirmación de la contraseña.')
 		else
 			return true
 	}), function(req, res, next){
-		const page = req.originalUrl.replace(/\//g, '')
 		const errors = validationResult(req).array()
 		if( errors.length !== 0 ){
-			res.render( page, {
+			res.render( 'signup', {
 				title: 'Las contraseñas no coinciden',
-				admin: req.body,
+				employed: req.body,
 				errors
 			})
 		}else{
@@ -105,15 +114,3 @@ exports.check_confirm = [
 		}
 	}
 ]
-
-
-
-//Se debe reemplazar por un xss decente
-//.escape().trim()
-// exports.cleanHTML = (req, res, next) => {
-//     for( let val in req.body){
-//         req.body[val] = req.body[val].replace(/&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});/ig, '');
-//         // limpia todos los atributos que tenian HTML Entities. Que genero el escape()
-//     }
-//     next();
-// }

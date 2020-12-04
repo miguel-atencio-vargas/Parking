@@ -279,7 +279,12 @@ table {
   font-size: 2rem;
   color: #3c3c3c;
   padding: 0 2rem;
-  line-height: 4rem;
+  line-height: 3rem;
+  max-width: 70rem;
+}
+.c-form p {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .c-form__group {
   margin: 0 0 2rem;
@@ -402,6 +407,15 @@ ul.c-header__panel li i {
   border-radius: 10px;
   font-size: 1.6rem;
 }
+.c-capacity {
+  padding: 2rem;
+}
+.c-capacity .h1 {
+  text-align: center;
+}
+.number {
+  color: #39ff9a;
+}
 .c-title {
   color: #fff9ef;
   padding: 2rem 4rem;
@@ -416,12 +430,12 @@ ul.c-header__panel li i {
 form p {
   font-size: 2.2rem;
   color: #fff7e8;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 0;
 }
 input {
   font-size: 2rem;
-  width: 60rem;
+  width: 100%;
   border-radius: 5px;
   background-color: #fff9ef;
   border: 3px solid #000;
@@ -448,7 +462,8 @@ input:visited {
   text-transform: uppercase;
   color: #303c42;
 }
-button.c-form-submit {
+button.c-form-submit,
+.c-form-submit-litle {
   display: block;
   border-radius: 10px;
   border: 0.4rem solid #39ff9a;
@@ -458,12 +473,35 @@ button.c-form-submit {
   font-size: 2.2rem;
   padding: 1.5rem 4rem;
 }
-button.c-form-submit i {
+button.c-form-submit i,
+.c-form-submit-litle i {
   vertical-align: middle;
   color: #ffc456;
 }
 .center {
   margin: 0 auto;
+}
+.c-title-form {
+  color: #fff9ef;
+  font-size: 2.2rem;
+  padding: 2rem 0 0;
+  text-align: center;
+  line-height: normal;
+}
+.c-title-form .h2 {
+  margin-bottom: 1rem;
+}
+.c-title-form p {
+  color: #3f9;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.c-form-submit-litle {
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+}
+.c-form-password {
+  display: flex;
 }
 .c-group-list {
   padding-top: 0.5rem;
@@ -704,5 +742,14 @@ button.c-form-submit i {
 .c-popup__menu a i {
   font-size: 2.3rem;
   padding-left: 0.8rem;
+}
+.c-message {
+  font-size: 2rem;
+  line-height: normal;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid #b548ff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 3px rgba(181,72,255,0.3);
 }
 /*# sourceMappingURL=global.css.map */

@@ -18,7 +18,8 @@ block container
 					i= data.hours + 'Hr, '
 				if data.minutes
 					i= data.minutes + 'Min'
-			.h2 Total a cobrar:  Bs.
+			.h2 Total a cobrar:
+				i= ' '+ total + 'Bs.'
 			form(method='POST', action='/outgoing')
 				input.hide(name='_id', value=ObjectId)
 				input.hide(name='timeOutgoing', value=timeOutgoing)

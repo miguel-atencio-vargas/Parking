@@ -16,22 +16,21 @@ let EmployedSchema = new Schema({
 	},
 	CI: {
 		type: String,
-		required: [true, 'El numero de cartner es necesario'],
+		required: [true, 'El numero de carnet es necesario'],
 		unique: true
 	},
 	phone: {
-		type: String
-		unique: true
+		type: String,
+		unique: false
 	},
 	startingTime: {
-		type: Date
+		type: String
 	},
 	finishingTime: {
-		type: Date
+		type: String
 	},
 	email: {
 		type: String,
-		unique: true,
 		required: [true, 'El email es necesario para crear la cuenta de administrador']
 	},
 	password: {
@@ -43,7 +42,7 @@ let EmployedSchema = new Schema({
 		default: new Date()
 	},
 	salary: {
-		type: Double,
+		type: Number,
 		required: [true, 'El salario es necesario']
 	}
 })

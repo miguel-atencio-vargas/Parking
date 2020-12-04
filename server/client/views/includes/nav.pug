@@ -1,12 +1,15 @@
+if user
+	li.close(class={active_page: page == '/checkin/search'})
+		a(href='/checkin/search') Entrada de vehículo#[i.icon-car]
 
-li.close(class={active_page: page == '/events'})
-	a(href="/checkin/search") Entrada de vehículo#[i.icon-car]
+	li.close(class={active_page: page == 'outgoing/search'})
+		a(href='/outgoing/search') Salida de vehículo#[i.icon-exit]
 
-li.close(class={active_page: page == '/outgoing'})
-	a(href="/outgoing/search") Salida de vehículo#[i.icon-exit]
+	li.close(class={active_page: page == '/outgoing/search'})
+		a(href='/employed/logout') Terminar Turno#[i.icon-exit]
+else
+	li.close(class={active_page: page == '/employed/signup'})
+		a(href='/employed/signup') Registrar Empleado#[i.icon-user-plus]
 
-li.close(class={active_page: page == '/register'})
-	a(href="/register") Registrar Empleado#[i.icon-user-plus]
-
-li.close(class={active_page: page == '/login'})
-	a(href="/login") Iniciar Sesión#[i.icon-user-check2]
+	li.close(class={active_page: page == '/employed/signin'})
+		a(href='/employed/signin') Iniciar Sesión#[i.icon-user-check2]
